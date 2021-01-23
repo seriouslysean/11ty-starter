@@ -1,0 +1,35 @@
+@import 'reset';
+
+html,
+body {
+    background-color: #EFEFEF;
+    text-align: center;
+}
+
+.wrapper {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        'header'
+        'main'
+        'footer';
+}
+
+.header {
+    background-color: #DEDEDE;
+    grid-area: header;
+    padding: 2em;
+}
+
+.main {
+    grid-area: main;
+    padding: 2em;
+}
+
+.footer {
+    background-color: #CDCDCD;
+    grid-area: footer;
+    padding: 2em;
+}

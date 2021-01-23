@@ -1,0 +1,39 @@
+{
+  "name": "11ty-starter",
+  "version": "1.0.0",
+  "description": "Website for 11ty-starter",
+  "homepage": "https://github.com/seriouslysean/11ty-starter#readme",
+  "bugs": {
+    "url": "https://github.com/seriouslysean/11ty-starter/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/seriouslysean/11ty-starter.git"
+  },
+  "license": "MIT",
+  "author": "Sean Kennedy <sean@codeserious.com>",
+  "main": "README.md",
+  "scripts": {
+    "build": "npm run clean && npm run sass && ELEVENTY_ENV=production eleventy",
+    "clean": "rm -rf dist",
+    "dev": "npm run serve:dev",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --ext .js --fix",
+    "sass": "sass --style=compressed ./src/_scss/styles.scss ./dist/css/styles.css",
+    "serve:dev": "npm-run-all clean sass --parallel watch:*",
+    "serve:prod": "npm run clean && ELEVENTY_ENV=production eleventy --serve",
+    "watch:sass": "npm run sass -- --watch",
+    "watch:eleventy": "ELEVENTY_ENV=development eleventy --serve"
+  },
+  "dependencies": {
+    "html-minifier": "^4.0.0",
+    "sass": "^1.32.5"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.1",
+    "eslint": "^7.18.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "npm-run-all": "^4.1.5",
+    "push-dir": "^0.4.1"
+  }
+}

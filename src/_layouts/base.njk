@@ -1,0 +1,42 @@
+---
+title: Eleventy Starter
+description: Eleventy Starter
+---
+
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>{{ title }}</title>
+        <meta name="description" content="{{ description }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/png" href="{{ '/img/favicon.png' | url }}">
+
+        <link rel="stylesheet" href="{{ '/css/styles.css' | url }}" />
+    </head>
+
+    <body>
+
+        <div id="app" class="wrapper">
+            {{ content | safe }}
+        </div>
+
+        {% if config.googleAnalyticsAccountId %}
+        <script>
+            window.ga = function () {
+                ga.q.push(arguments);
+            };
+            ga.q = [];
+            ga.l = +new Date;
+            ga('create', 'AA-00000000-0', 'auto');
+            ga('set', 'anonymizeIp', true);
+            ga('set', 'transport', 'beacon');
+            ga('send', 'pageview');
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async></script>
+        {% endif %}
+    </body>
+
+</html>
