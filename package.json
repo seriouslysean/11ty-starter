@@ -14,15 +14,17 @@
   "author": "Sean Kennedy <sean@codeserious.com>",
   "main": "README.md",
   "scripts": {
-    "build": "npm run clean && npm run sass && ELEVENTY_ENV=production eleventy",
+    "build": "npm run clean && npm run sass:prod && ELEVENTY_ENV=production eleventy",
     "clean": "rm -rf dist",
     "dev": "npm run serve:dev",
+    "prod": "npm run serve:prod",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --ext .js --fix",
-    "sass": "sass --style=compressed ./src/_scss/styles.scss ./dist/css/styles.css",
-    "serve:dev": "npm-run-all clean sass --parallel watch:*",
-    "serve:prod": "npm run clean && ELEVENTY_ENV=production eleventy --serve",
-    "watch:sass": "npm run sass -- --watch",
+    "sass:dev": "sass --style=expanded ./src/_scss/styles.scss ./dist/css/styles.css",
+    "sass:prod": "sass --style=compressed ./src/_scss/styles.scss ./dist/css/styles.css",
+    "serve:dev": "npm-run-all clean sass:dev --parallel watch:*",
+    "serve:prod": "npm run clean && npm run sass:prod && ELEVENTY_ENV=production eleventy --serve",
+    "watch:sass": "npm run sass:dev -- --watch",
     "watch:eleventy": "ELEVENTY_ENV=development eleventy --serve"
   },
   "dependencies": {
