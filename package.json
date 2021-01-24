@@ -17,25 +17,26 @@
     "build": "npm run clean && npm run sass:prod && ELEVENTY_ENV=production eleventy",
     "clean": "rm -rf dist",
     "dev": "npm run serve:dev",
-    "prod": "npm run serve:prod",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --ext .js --fix",
-    "sass:dev": "sass --style=expanded ./src/_scss/styles.scss ./dist/css/styles.css",
-    "sass:prod": "sass --style=compressed ./src/_scss/styles.scss ./dist/css/styles.css",
-    "serve:dev": "npm-run-all clean sass:dev --parallel watch:*",
+    "prod": "npm run serve:prod",
+    "sass": "node ./tools/build-css.js",
+    "serve:dev": "npm-run-all clean sass --parallel watch:*",
     "serve:prod": "npm run clean && npm run sass:prod && ELEVENTY_ENV=production eleventy --serve",
-    "watch:sass": "npm run sass:dev -- --watch",
-    "watch:eleventy": "ELEVENTY_ENV=development eleventy --serve"
-  },
-  "dependencies": {
-    "html-minifier": "^4.0.0",
-    "sass": "^1.32.5"
+    "watch:eleventy": "ELEVENTY_ENV=development eleventy --serve",
+    "watch:sass": "onchange ./src/_scss/** -- npm run sass"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.11.1",
+    "autoprefixer": "^10.2.3",
+    "cssnano": "^4.1.10",
     "eslint": "^7.18.0",
     "eslint-config-airbnb-base": "^14.2.1",
+    "html-minifier": "^4.0.0",
     "npm-run-all": "^4.1.5",
-    "push-dir": "^0.4.1"
+    "onchange": "^7.1.0",
+    "postcss": "^8.2.4",
+    "push-dir": "^0.4.1",
+    "sass": "^1.32.5"
   }
 }

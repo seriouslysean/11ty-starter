@@ -21,6 +21,7 @@ module.exports = function configureEleventy(eleventyConfig) {
     // Watch the CSS folder for changes when SASS is compiled
     // .gitignore usage needs to be disabled to add the dist folder
     eleventyConfig.setUseGitIgnore(false);
+    eleventyConfig.addWatchTarget('./dist/css/');
     eleventyConfig.addWatchTarget('./src/_scss/');
 
     if (isProduction) {
@@ -28,7 +29,6 @@ module.exports = function configureEleventy(eleventyConfig) {
     }
 
     eleventyConfig.addPassthroughCopy('./src/img');
-    eleventyConfig.addPassthroughCopy({ './src/.css': 'css' });
 
     return {
         dir: {
